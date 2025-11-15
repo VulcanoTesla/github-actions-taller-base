@@ -1,4 +1,18 @@
-name: Integración Continua (CI)
+name: Integracion Continua (CI)
 on:
-push:
-branches: [main]
+ push:
+  branches: [main]
+jobs:
+ build_and_test:
+  runs-on: ubuntu-latest
+  steps:
+   - name: 1 obtener codigo
+     uses: actions/checkout@v4
+   - name: 2 configurar node.js(20)
+     uses: actions/setup-node@v4
+     with: 
+      node-version: '20.x'
+   - name: 3 instalar dependecinas
+     run: npm ci
+   - name: 4 probar el codigo
+     run: npm test
