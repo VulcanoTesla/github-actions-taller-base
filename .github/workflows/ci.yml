@@ -19,3 +19,12 @@ jobs:
      run: npm ci
    - name: 4 probar el codigo
      run: npm test
+ deploy:
+  needs: [build_and_test]
+  runs-on:
+   ubuntu-latest
+  steps:
+   - name: 1. Descargar el codigo
+     uses: actions/checkout@v4
+   - name: 2. despliegue
+     run: echo "despliegue exitoso"
